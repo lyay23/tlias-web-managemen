@@ -4,6 +4,12 @@
     <option name="conversations">
       <list>
         <Conversation>
+          <option name="createTime" value="1743073757580" />
+          <option name="id" value="0195d74ac98c7dc0bc765b1a9714e22e" />
+          <option name="title" value="新对话 2025年3月27日 19:09:17" />
+          <option name="updateTime" value="1743073757580" />
+        </Conversation>
+        <Conversation>
           <option name="createTime" value="1743067391809" />
           <option name="id" value="0195d6e9a7417a6a9edeaca0fe0dc88e" />
           <option name="title" value="#数据库的连接&#10;spring:&#10;  application:&#10;    name: tlias-web" />

@@ -44,4 +44,15 @@ public class DeptController {
         return Result.success();
    }
 
+   /**
+    * 部门管理--添加部门
+    * @return
+    */
+   @PostMapping("/depts")
+   public Result add(@RequestBody Dept dept){
+       deptService.add(dept);
+       log.info("添加部门:{}",dept);
+       return Result.success();
+   }
+
 }
