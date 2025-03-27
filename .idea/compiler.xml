@@ -7,14 +7,6 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-      </profile>
-      <profile name="Annotation profile for JavaWebItheima" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
-          <entry name="D:/apache-maven-3.9.9/repository/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
-        </processorPath>
         <module name="tlias-web-managemen" />
       </profile>
     </annotationProcessing>

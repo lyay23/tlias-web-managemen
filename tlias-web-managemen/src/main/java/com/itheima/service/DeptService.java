@@ -15,8 +15,14 @@ import java.util.List;
 public interface DeptService {
 
     /**
-     * 查询所有部门数据
+     * 部门管理-查询所有部门数据
      * @return
      */
     List<Dept> findAll();
+
+    /**
+     * 部门管理根据id删除部门信息
+     * @param id
+     */
+    void deleteById(Integer id);
 }

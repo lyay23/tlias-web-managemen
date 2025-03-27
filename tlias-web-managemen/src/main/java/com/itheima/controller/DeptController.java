@@ -3,9 +3,9 @@ package com.itheima.controller;
 import com.itheima.pojo.Dept;
 import com.itheima.pojo.Result;
 import com.itheima.service.DeptService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,14 +16,32 @@ import java.util.List;
  * @Date: 2025/03/27/15:43
  * @Description: 部门控制层
  */
+@Slf4j
 @RestController
 public class DeptController {
 
     @Autowired
     private DeptService deptService;
+
+    /**
+     * 部门管理--查询所有部门
+     * @return
+     */
     @GetMapping("/depts")
     public Result list(){
       List<Dept> deptList = deptService.findAll();
         return Result.success(deptList);
     }
+
+    /**
+     * 部门管理--删除指定部门
+     * @return
+     */
+    @DeleteMapping("/depts")
+   public Result delete( Integer id){
+        deptService.deleteById(id);
+        log.info("删除部门id为：{}",id);
+        return Result.success();
+   }
+
 }
