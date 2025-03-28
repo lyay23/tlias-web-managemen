@@ -21,11 +21,11 @@ import java.util.List;
 public class DeptServiceImpl implements DeptService {
 
     @Autowired
-    private DeptMapper deptMapper;
+    private  DeptMapper deptMapper;
+
 
     /**
      * 查询所有部门数据
-     * @return
      */
     @Override
     public List<Dept> findAll() {
@@ -34,7 +34,6 @@ public class DeptServiceImpl implements DeptService {
 
     /**
      * 根据id删除部门信息
-     * @param id
      */
     @Override
     public void deleteById(Integer id) {
@@ -43,7 +42,6 @@ public class DeptServiceImpl implements DeptService {
 
     /**
      * 添加部门信息
-     * @param dept
      */
     @Override
     public void add(Dept dept) {
@@ -58,8 +56,6 @@ public class DeptServiceImpl implements DeptService {
 
     /**
      * 根据id查询部门信息
-     * @param id
-     * @return
      */
     @Override
     public Dept getInfo(Integer id) {
@@ -68,7 +64,6 @@ public class DeptServiceImpl implements DeptService {
 
     /**
      * 修改部门信息
-     * @param dept
      */
     @Override
     public void update(Dept dept) {

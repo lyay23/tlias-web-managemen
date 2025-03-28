@@ -18,6 +18,7 @@ import java.util.List;
  */
 @Slf4j
 @RestController
+@RequestMapping("/depts")
 public class DeptController {
 
     @Autowired
@@ -25,19 +26,18 @@ public class DeptController {
 
     /**
      * 部门管理--查询所有部门
-     * @return
      */
-    @GetMapping("/depts")
+    @GetMapping
     public Result list(){
       List<Dept> deptList = deptService.findAll();
+      log.info("查询所有部门:{}",deptList);
         return Result.success(deptList);
     }
 
     /**
      * 部门管理--删除指定部门
-     * @return
      */
-    @DeleteMapping("/depts")
+    @DeleteMapping
    public Result delete( Integer id){
         deptService.deleteById(id);
         log.info("删除部门id为：{}",id);
@@ -46,9 +46,8 @@ public class DeptController {
 
    /**
     * 部门管理--添加部门
-    * @return
     */
-   @PostMapping("/depts")
+   @PostMapping
    public Result add(@RequestBody Dept dept){
        deptService.add(dept);
        log.info("添加部门:{}",dept);
@@ -57,10 +56,9 @@ public class DeptController {
 
    /**
     * 部门管理--修改部门
-    * @return
     */
    //首先要根据这个id查询出这个部门，实现回显操作
-   @GetMapping("/depts/{id}")
+   @GetMapping("/{id}")
    public Result getInfo(@PathVariable Integer id){
        log.info("查询部门id为：{}",id);
        Dept dept=deptService.getInfo(id);
@@ -68,7 +66,7 @@ public class DeptController {
        return Result.success(dept);
    }
    //根据id修改部门
-   @PutMapping("/depts")
+   @PutMapping
     public Result update(@RequestBody Dept dept){
        deptService.update(dept);
        log.info("修改部门:{}",dept);

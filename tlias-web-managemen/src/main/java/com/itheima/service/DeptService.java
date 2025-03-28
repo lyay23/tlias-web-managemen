@@ -16,33 +16,27 @@ public interface DeptService {
 
     /**
      * 部门管理-查询所有部门数据
-     * @return
      */
     List<Dept> findAll();
 
     /**
      * 部门管理根据id删除部门信息
-     * @param id
      */
     void deleteById(Integer id);
 
 
     /**
      * 部门管理-添加部门信息
-     * @param dept
      */
     void add(Dept dept);
 
     /**
      * 部门管理-根据id查询部门信息
-     * @param id
-     * @return
      */
     Dept getInfo(Integer id);
 
     /**
      * 部门管理-修改部门信息
-     * @param dept
      */
     void update(Dept dept);
 }
