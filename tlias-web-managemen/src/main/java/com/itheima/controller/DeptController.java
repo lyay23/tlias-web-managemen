@@ -55,4 +55,24 @@ public class DeptController {
        return Result.success();
    }
 
+   /**
+    * 部门管理--修改部门
+    * @return
+    */
+   //首先要根据这个id查询出这个部门，实现回显操作
+   @GetMapping("/depts/{id}")
+   public Result getInfo(@PathVariable Integer id){
+       log.info("查询部门id为：{}",id);
+       Dept dept=deptService.getInfo(id);
+       //查询成功就返回这个部门
+       return Result.success(dept);
+   }
+   //根据id修改部门
+   @PutMapping("/depts")
+    public Result update(@RequestBody Dept dept){
+       deptService.update(dept);
+       log.info("修改部门:{}",dept);
+       return Result.success();
+   }
+
 }

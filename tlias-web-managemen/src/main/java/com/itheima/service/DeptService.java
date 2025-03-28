@@ -32,4 +32,17 @@ public interface DeptService {
      * @param dept
      */
     void add(Dept dept);
+
+    /**
+     * 部门管理-根据id查询部门信息
+     * @param id
+     * @return
+     */
+    Dept getInfo(Integer id);
+
+    /**
+     * 部门管理-修改部门信息
+     * @param dept
+     */
+    void update(Dept dept);
 }
