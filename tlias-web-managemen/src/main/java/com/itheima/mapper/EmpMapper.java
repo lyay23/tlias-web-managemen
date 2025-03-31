@@ -20,8 +20,12 @@ public interface EmpMapper {
 
     /**
      * 条件查询员工信息
-     * @param empQueryParam
-     * @return
      */
     List<Emp> list(EmpQueryParam empQueryParam);
+
+    /**
+     * 新增员工基本信息
+     */
+
+    void insert(Emp emp);
 }

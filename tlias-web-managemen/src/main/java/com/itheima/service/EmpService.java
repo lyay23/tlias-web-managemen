@@ -17,4 +17,9 @@ public interface EmpService {
      * 员工管理-分页查询
      */
     PageResult<Emp> page(EmpQueryParam empQueryParam);
+
+    /**
+     * 员工管理--新增员工
+     */
+    void save(Emp emp);
 }

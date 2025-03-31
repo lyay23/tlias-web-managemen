@@ -1,8 +1,11 @@
 package com.itheima.pojo;
 
 import lombok.Data;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
+
 
 /**
  * Created with IntelliJ IDEA.
@@ -40,6 +43,11 @@ public class Emp {
     private LocalDateTime createTime;
     //修改时间
     private LocalDateTime updateTime;
+
     //封装的部门名称
     private String deptName;
+    // getter 和 setter 方法
+    //封装工作经历的实体类
+    private List<EmpExpr> exprList;
+
 }
