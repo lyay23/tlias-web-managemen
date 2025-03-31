@@ -1,12 +1,12 @@
 spring:
   application:
-    name: tlias-web-managemen  # 修正可能的拼写错误（managemen → management）
+    name: tlias-web-managemen  # 应用名称
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/tlias?useUnicode=true&characterEncoding=utf-8&useSSL=true
     username: root
     password: abc123
-  mybatis:
-    configuration:
-      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  # 启用 MyBatis SQL 日志
-      map-underscore-to-camel-case: true
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  # 启用 MyBatis SQL 日志
+    map-underscore-to-camel-case: true

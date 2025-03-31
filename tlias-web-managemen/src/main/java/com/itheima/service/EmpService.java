@@ -1,6 +1,7 @@
 package com.itheima.service;
 
 import com.itheima.pojo.Emp;
+import com.itheima.pojo.EmpQueryParam;
 import com.itheima.pojo.PageResult;
 
 /**
@@ -14,9 +15,6 @@ import com.itheima.pojo.PageResult;
 public interface EmpService {
     /**
      * 员工管理-分页查询
-     * @param page
-     * @param pageSize
-     * @return
      */
-    public PageResult<Emp> page(Integer page, Integer pageSize);
+    PageResult<Emp> page(EmpQueryParam empQueryParam);
 }

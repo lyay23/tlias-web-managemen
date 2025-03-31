@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itheima.mapper.EmpMapper">
+
+<!--    分页查询-->
+    <select id="list" resultType="com.itheima.pojo.Emp">
+        select e.*,d.name deptName from emp e left join dept d on e.dept_id = d.id
+        <where>
+            <if test="name!=null and name != '' " >
+                e.name like concat('%',#{name},'%')
+            </if>
+            <if test="gender!=null and gender != '' " >
+                and e.gender=#{gender}
+            </if>
+            <if test="begin!=null and end!=null " >
+                and e.entry_date between #{begin} and #{end}
+            </if>
+        </where> order by e.id desc
+    </select>
+</mapper>

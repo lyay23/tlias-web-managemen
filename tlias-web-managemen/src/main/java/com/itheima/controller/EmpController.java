@@ -1,6 +1,7 @@
 package com.itheima.controller;
 
 import com.itheima.pojo.Emp;
+import com.itheima.pojo.EmpQueryParam;
 import com.itheima.pojo.PageResult;
 import com.itheima.pojo.Result;
 import com.itheima.service.EmpService;
@@ -24,13 +25,14 @@ public class EmpController {
 
     @Autowired
     private EmpService empService;
+
     /**
      * 员工管理--分页查询
      */
     @GetMapping
-   public Result page(Integer page, Integer pageSize){
-        log.info("分页查询员工信息,当前页码：{},每页显示条数：{}",page,pageSize);
-        PageResult<Emp> pageResult= empService.page(page,pageSize);
+   public Result page(EmpQueryParam empQueryParam){
+        log.info("分页查询员工信息,参数：{}", empQueryParam);
+        PageResult<Emp> pageResult= empService.page(empQueryParam);
        return Result.success(pageResult);
    }
 }
