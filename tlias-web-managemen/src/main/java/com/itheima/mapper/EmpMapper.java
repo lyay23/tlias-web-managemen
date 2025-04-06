@@ -28,4 +28,9 @@ public interface EmpMapper {
      */
 
     void insert(Emp emp);
+
+    /**
+     * 批量根据id删除员工基本信息
+     */
+    void deleteByIds(List<Integer> ids);
 }

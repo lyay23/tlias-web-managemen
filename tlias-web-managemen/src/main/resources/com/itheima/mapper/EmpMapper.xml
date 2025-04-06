@@ -3,6 +3,7 @@
 <mapper namespace="com.itheima.mapper.EmpMapper">
 
 
+
     <!--    分页查询-->
     <select id="list" resultType="com.itheima.pojo.Emp">
         select e.*,d.name deptName from emp e left join dept d on e.dept_id = d.id
@@ -30,4 +31,12 @@
     </insert>
 
 
+<!--    批量删除员工的基本信息-->
+    <delete id="deleteByIds">
+        delete from emp where id in
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+                        #{id}
+        </foreach>
+
+    </delete>
 </mapper>

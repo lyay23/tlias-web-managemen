@@ -9,6 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  *
@@ -41,6 +43,25 @@ public class EmpController {
    public Result save(@RequestBody Emp emp){
        log.info("新增员工信息,参数：{}", emp);
        empService.save(emp);
+       return Result.success();
+   }
+
+   /**
+    * 员工管理--删除员工
+    */
+  /* 方式一：使用数组
+   @DeleteMapping
+   public Result delete(Integer[] ids){
+       log.info("删除员工信息,参数：{}", Arrays.toString(ids));
+       empService.delete(id);
+       return Result.success();
+   }
+   */
+   //使用集合
+   @DeleteMapping
+   public Result delete(@RequestParam List<Integer> ids){
+       log.info("删除员工信息,参数：{}", ids);
+       empService.delete(ids);
        return Result.success();
    }
 }
