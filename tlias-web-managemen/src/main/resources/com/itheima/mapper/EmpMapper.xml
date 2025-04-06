@@ -20,10 +20,10 @@
         </where> order by e.id desc
     </select>
 
-<!--   保存员工基本信息
-       useGeneratedKeys="true": 获取数据库提供的主键值
-        keyProperty="id"：获取的是主键id属性
- -->
+    <!--   保存员工基本信息
+           useGeneratedKeys="true": 获取数据库提供的主键值
+            keyProperty="id"：获取的是主键id属性
+     -->
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="id">
         insert into emp(username, name, gender, phone, job, salary, image, entry_date, dept_id, create_time, update_time)
@@ -39,4 +39,62 @@
         </foreach>
 
     </delete>
+
+<!-- 根据id查询员工信息以及工作经历-->
+    <resultMap id="empResultMap" type="com.itheima.pojo.Emp">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="name" property="name"/>
+        <result column="gender" property="gender"/>
+        <result column="phone" property="phone"/>
+        <result column="job" property="job"/>
+        <result column="salary" property="salary"/>
+        <result column="image" property="image"/>
+        <result column="entry_date" property="entryDate"/>
+        <result column="dept_id" property="deptId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+
+        <collection property="exprList" ofType="com.itheima.pojo.EmpExpr">
+            <id column="ee_id" property="id"/>
+            <result column="ee_empid" property="empId"/>
+            <result column="ee_begin" property="begin"/>
+            <result column="ee_end" property="end"/>
+            <result column="ee_company" property="company"/>
+            <result column="ee_job" property="job"/>
+        </collection>
+    </resultMap>
+    <select id="getById" resultMap="empResultMap">
+        select
+            e.*,
+            ee.id ee_id,
+            ee.emp_id ee_empid,
+            ee.begin ee_begin,
+            ee.end ee_end,
+            ee.company ee_company,
+            ee.job ee_job
+        from emp e left join emp_expr ee on e.id = ee.emp_id where e.id=#{id}
+    </select>
+
+    <!-- 根据id动态更新员工信息
+         set: 动态更新 会自动生成set关键字，会自动删除更新字段后的多余逗号
+     -->
+    <update id="updateById">
+        update emp
+        <set>
+            <if test="username != null and username !=''">username=#{username},</if>
+            <if test="password != null and password!=''">password=#{password},</if>
+            <if test="name != null">name=#{name},</if>
+            <if test="gender != null">gender=#{gender},</if>
+            <if test="phone != null and phone !=''">phone=#{phone},</if>
+            <if test="job != null">job=#{job},</if>
+            <if test="salary != null">salary=#{salary},</if>
+            <if test="image != null and image !=''">image=#{image},</if>
+            <if test="entryDate != null">entry_date=#{entryDate},</if>
+            <if test="deptId != null">dept_id=#{deptId},</if>
+            <if test="updateTime != null">update_time=#{updateTime}</if>
+        </set>
+        where id=#{id}
+    </update>
+
 </mapper>

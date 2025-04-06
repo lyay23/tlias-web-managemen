@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -80,6 +81,9 @@ public class EmpServiceImpl implements EmpService {
 
     }
 
+    /**
+     * 批量删除员工 包括事务两个一起成功
+     */
     @Transactional(rollbackFor = {Exception.class}) //事务管理-出现异常都需要回滚
     @Override
     public void delete(List<Integer> ids) {
@@ -90,4 +94,37 @@ public class EmpServiceImpl implements EmpService {
         empExprMapper.deleteByEmpIds(ids);
     }
 
+
+
+    /**
+     * 根据id查询员工信息
+     */
+    @Override
+    public Emp getInfo(Integer id) {
+        return empMapper.getById(id);
+    }
+
+    /**
+     * 修改员工信息
+     */
+    @Transactional(rollbackFor = Exception.class) //事务管理
+    @Override
+    public void update(Emp emp) {
+        //1. 根据id修改员工基本信息
+        emp.setUpdateTime(LocalDateTime.now());
+        empMapper.updateById(emp);
+
+        //2. 根据id修改员工工作经历信息--先删除再添加
+        //2.1 删除员工工作经历信息
+        empExprMapper.deleteByEmpIds(Arrays.asList(emp.getId()));
+        //2.2 添加员工工作经历信息
+        List<EmpExpr> exprList = emp.getExprList();
+        if (!CollectionUtils.isEmpty(exprList)) {
+            exprList.forEach(empExpr -> {
+                empExpr.setEmpId(emp.getId());
+            });
+            empExprMapper.insertBatch(exprList);
+        }
+
+    }
 }

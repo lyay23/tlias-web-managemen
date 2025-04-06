@@ -64,4 +64,24 @@ public class EmpController {
        empService.delete(ids);
        return Result.success();
    }
+
+    /**
+     * 员工管理--修改员工
+     */
+    // 根据id回显
+    @GetMapping("/{id}")
+    // @PathVariable 用于获取路径参数
+    public Result getEmp(@PathVariable Integer id){
+        log.info("根据id查询员工信息,参数：{}", id);
+        Emp emp = empService.getInfo(id);
+        return Result.success(emp);
+    }
+    // 修改员工信息
+    @PutMapping
+    public Result update(@RequestBody Emp emp){
+        log.info("修改员工信息,参数：{}", emp);
+        empService.update(emp);
+        return Result.success();
+    }
+
 }
