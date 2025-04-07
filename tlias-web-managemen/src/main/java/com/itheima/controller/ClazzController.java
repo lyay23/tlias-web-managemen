@@ -66,4 +66,14 @@ public class ClazzController {
         Clazz clazz = clazzService.findById(id);
         return Result.success(clazz);
     }
+
+    /**
+     * 班级管理--根据id修改班级
+     */
+    @PutMapping
+    public Result update(@RequestBody Clazz clazz) {
+        log.info("修改班级信息,参数：{}", clazz);
+        clazzService.update(clazz);
+        return Result.success();
+    }
 }

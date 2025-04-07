@@ -70,4 +70,13 @@ public class ClazzServiceImpl implements ClazzService {
     public Clazz findById(Integer id) {
         return clazzMapper.findById(id);
     }
+
+    /**
+     * 班级管理-根据id修改班级
+     */
+    @Override
+    public void update(Clazz clazz) {
+        clazz.setUpdateTime(LocalDateTime.now());
+        clazzMapper.update(clazz);
+    }
 }

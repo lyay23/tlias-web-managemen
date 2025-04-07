@@ -2,8 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.itheima.mapper.ClazzMapper">
 
-
-
     <!--分页条件查询-->
     <select id="list" resultType="com.itheima.pojo.Clazz">
         select c.*, e.name masterName,
@@ -36,4 +34,10 @@
     <select id="findById" resultType="com.itheima.pojo.Clazz">
         select * from clazz where id = #{id}
     </select>
+
+    <!--    修改班级-->
+    <update id="update">
+        update clazz set name = #{name},room = #{room},begin_date = #{beginDate},end_date = #{endDate},master_id = #{masterId},subject = #{subject},update_time = #{updateTime} where id = #{id}
+    </update>
+
 </mapper>

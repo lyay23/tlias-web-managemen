@@ -35,4 +35,9 @@ public interface ClazzMapper {
      * 根据id查询班级
      */
     Clazz findById(Integer id);
+
+    /**
+     * 根据id修改班级
+     */
+    void update(Clazz clazz);
 }
