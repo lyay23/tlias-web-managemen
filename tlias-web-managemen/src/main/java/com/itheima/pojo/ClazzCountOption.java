@@ -10,16 +10,15 @@ import java.util.List;
  * Created with IntelliJ IDEA.
  *
  * @Author: 李阳
- * @Date: 2025/04/07/8:30
- * @Description: 柱状图饼壮图的实体类
+ * @Date: 2025/04/07/12:57
+ * @Description: 班级模块柱状图饼图的实体类
  */
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class JobOption {
-
+@AllArgsConstructor
+public class ClazzCountOption {
     //职位列表
-    private List jobList;
-    //数据列表
+    private List clazzList;
+    //人数列表
     private List dataList;
 }
