@@ -30,4 +30,9 @@ public interface ClazzService {
      * 班级管理--根据id删除班级
      */
     void delete(Integer id);
+
+    /**
+     * 班级管理--根据id查询班级
+     */
+    Clazz findById(Integer id);
 }

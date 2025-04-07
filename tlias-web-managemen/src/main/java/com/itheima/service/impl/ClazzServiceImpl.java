@@ -28,7 +28,7 @@ public class ClazzServiceImpl implements ClazzService {
 
 
     /**
-     * 分页查询
+     * 班级管理-分页查询
      */
     @Override
     public PageResult<Clazz> page(ClazzQueryParam clazzQueryParam) {
@@ -42,7 +42,7 @@ public class ClazzServiceImpl implements ClazzService {
     }
 
     /**
-     * 根据id查询删除班级
+     * 班级管理-根据id查询删除班级
      */
     @Override
     public void delete(Integer id) {
@@ -51,7 +51,7 @@ public class ClazzServiceImpl implements ClazzService {
     }
 
     /**
-     * 新增班级
+     * 班级管理-新增班级
      * 有一个回显操作，回显所有班主任，不过不会写
      */
     @Override
@@ -63,6 +63,11 @@ public class ClazzServiceImpl implements ClazzService {
         clazzMapper.save(clazz);
     }
 
-
-
+    /**
+     * 班级管理-根据id查询班级
+     */
+    @Override
+    public Clazz findById(Integer id) {
+        return clazzMapper.findById(id);
+    }
 }

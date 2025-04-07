@@ -57,5 +57,13 @@ public class ClazzController {
         return Result.success();
     }
 
-
+    /**
+     * 班级管理--根据id查询班级
+     */
+    @GetMapping("/{id}")
+    public Result findById(@PathVariable("id") Integer id) {
+        log.info("根据id查询班级信息,参数：{}", id);
+        Clazz clazz = clazzService.findById(id);
+        return Result.success(clazz);
+    }
 }

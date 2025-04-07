@@ -21,6 +21,7 @@
     </select>
 
 
+
     <!--    添加班级-->
     <insert id="save">
        insert into clazz(name,room,begin_date,end_date,master_id,subject,create_time,update_time) values (#{name},#{room},#{beginDate},#{endDate},#{masterId},#{subject},#{createTime},#{updateTime})
@@ -30,4 +31,9 @@
     <delete id="delete">
         delete from clazz where id = #{id}
     </delete>
+
+<!--    根据id查询班级-->
+    <select id="findById" resultType="com.itheima.pojo.Clazz">
+        select * from clazz where id = #{id}
+    </select>
 </mapper>
