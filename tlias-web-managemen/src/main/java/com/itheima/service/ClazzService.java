@@ -4,6 +4,8 @@ import com.itheima.pojo.Clazz;
 import com.itheima.pojo.ClazzQueryParam;
 import com.itheima.pojo.PageResult;
 
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  *
@@ -40,4 +42,9 @@ public interface ClazzService {
      * 班级管理--根据id修改班级
      */
     void update(Clazz clazz);
+
+    /**
+     * 班级管理--查询所有班级
+     */
+    List<Clazz> findAll();
 }

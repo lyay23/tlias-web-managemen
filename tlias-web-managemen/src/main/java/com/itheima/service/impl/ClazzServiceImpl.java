@@ -2,7 +2,9 @@ package com.itheima.service.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.itheima.exception.BusinessException;
 import com.itheima.mapper.ClazzMapper;
+import com.itheima.mapper.StudentMapper;
 import com.itheima.pojo.Clazz;
 import com.itheima.pojo.ClazzQueryParam;
 import com.itheima.pojo.PageResult;
@@ -25,7 +27,8 @@ public class ClazzServiceImpl implements ClazzService {
 
     @Autowired
     private ClazzMapper clazzMapper;
-
+    @Autowired
+    private StudentMapper studentMapper;
 
     /**
      * 班级管理-分页查询
@@ -46,6 +49,13 @@ public class ClazzServiceImpl implements ClazzService {
      */
     @Override
     public void delete(Integer id) {
+       Integer count=studentMapper.countByClazzId(id);
+        if(count>0){
+            // 这段代码抄人家的 不过实测使用RuntimeException也是一样的
+            throw new BusinessException("该班级下有学生，不能删除");
+
+        }
+        //没有再删除
         clazzMapper.delete(id);
 
     }
@@ -78,5 +88,13 @@ public class ClazzServiceImpl implements ClazzService {
     public void update(Clazz clazz) {
         clazz.setUpdateTime(LocalDateTime.now());
         clazzMapper.update(clazz);
+    }
+
+    /**
+     * 班级管理-查询所有班级
+     */
+    @Override
+    public List<Clazz> findAll() {
+        return clazzMapper.findAll();
     }
 }

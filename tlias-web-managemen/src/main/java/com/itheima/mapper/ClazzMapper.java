@@ -40,4 +40,9 @@ public interface ClazzMapper {
      * 根据id修改班级
      */
     void update(Clazz clazz);
+
+    /**
+     * 查询所有班级
+     */
+    List<Clazz> findAll();
 }

@@ -37,7 +37,22 @@
 
     <!--    修改班级-->
     <update id="update">
-        update clazz set name = #{name},room = #{room},begin_date = #{beginDate},end_date = #{endDate},master_id = #{masterId},subject = #{subject},update_time = #{updateTime} where id = #{id}
+        update clazz
+        <set>
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="room != null and name != ''">room = #{room},</if>
+            <if test="beginDate != null">begin_date= #{beginDate},</if>
+            <if test="endDate != null">end_date = #{endDate},</if>
+            <if test="masterId != null">master_id = #{masterId},</if>
+            <if test="subject != null">subject = #{subject},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </set>
+        where id = #{id}
+
     </update>
 
+<!--    查询所有班级-->
+    <select id="findAll" resultType="com.itheima.pojo.Clazz">
+        select  name, room, begin_date, end_date, master_id, subject, create_time, update_time from clazz
+    </select>
 </mapper>

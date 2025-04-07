@@ -44,4 +44,9 @@ public class GlobalExceptionHandler {
         // 返回错误信息 第3个元素
         return Result.error("数据库中已存在该记录"+split[2]);
     }
+
+    @ExceptionHandler(BusinessException.class)
+    public Result ex(BusinessException e) {
+        return Result.error(e.getMessage());
+    }
 }

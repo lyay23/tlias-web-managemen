@@ -9,6 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  *
@@ -75,5 +77,15 @@ public class ClazzController {
         log.info("修改班级信息,参数：{}", clazz);
         clazzService.update(clazz);
         return Result.success();
+    }
+
+    /**
+     * 班级管理--查询所以班级
+     */
+    @GetMapping("/list")
+    public Result findAll() {
+       List<Clazz> clazzList= clazzService.findAll();
+        log.info("查询所有班级信息");
+        return Result.success(clazzList);
     }
 }
