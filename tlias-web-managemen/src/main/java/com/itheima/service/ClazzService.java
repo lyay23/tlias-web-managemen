@@ -13,5 +13,18 @@ import com.itheima.pojo.PageResult;
  */
 public interface ClazzService {
 
+    /**
+     * 班级管理--分页查询
+     * @param clazzQueryParam
+     * @return
+     */
     PageResult<Clazz> page(ClazzQueryParam clazzQueryParam);
+
+    /**
+     * 班级管理--新增班级
+     */
+    void save(Clazz clazz);
+
+
+
 }

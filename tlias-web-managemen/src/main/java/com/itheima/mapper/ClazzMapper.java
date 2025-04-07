@@ -20,4 +20,10 @@ public interface ClazzMapper {
      * 分页查询班级列表
      */
     List<Clazz> list(ClazzQueryParam clazzQueryParam);
+
+    /**
+     * 新增班级
+     */
+    void save(Clazz clazz);
+
 }

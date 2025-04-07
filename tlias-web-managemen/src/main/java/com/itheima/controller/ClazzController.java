@@ -7,9 +7,7 @@ import com.itheima.pojo.Result;
 import com.itheima.service.ClazzService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -36,4 +34,18 @@ public class ClazzController {
         PageResult<Clazz> pageResult = clazzService.page(clazzQueryParam);
         return Result.success(pageResult);
     }
+
+    /**
+     * 班级管理--新增班级
+     * 这里的班主任功能我不会写，如果有人会写请联系我，谢谢！
+     * 这里的班主任是非必须功能，所以很遗憾不会写
+     */
+    @PostMapping
+    public Result save(@RequestBody Clazz clazz) {
+        log.info("新增班级信息,参数：{}", clazz);
+        clazzService.save(clazz);
+        return Result.success();
+    }
+
+
 }
