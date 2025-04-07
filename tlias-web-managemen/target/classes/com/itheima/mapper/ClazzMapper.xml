@@ -26,4 +26,8 @@
        insert into clazz(name,room,begin_date,end_date,master_id,subject,create_time,update_time) values (#{name},#{room},#{beginDate},#{endDate},#{masterId},#{subject},#{createTime},#{updateTime})
     </insert>
 
+<!-- 根据id删除班级-->
+    <delete id="delete">
+        delete from clazz where id = #{id}
+    </delete>
 </mapper>

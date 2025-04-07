@@ -26,5 +26,8 @@ public interface ClazzService {
     void save(Clazz clazz);
 
 
-
+    /**
+     * 班级管理--根据id删除班级
+     */
+    void delete(Integer id);
 }

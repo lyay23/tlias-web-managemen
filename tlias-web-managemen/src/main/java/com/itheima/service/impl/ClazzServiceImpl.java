@@ -42,6 +42,15 @@ public class ClazzServiceImpl implements ClazzService {
     }
 
     /**
+     * 根据id查询删除班级
+     */
+    @Override
+    public void delete(Integer id) {
+        clazzMapper.delete(id);
+
+    }
+
+    /**
      * 新增班级
      * 有一个回显操作，回显所有班主任，不过不会写
      */

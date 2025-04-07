@@ -26,4 +26,8 @@ public interface ClazzMapper {
      */
     void save(Clazz clazz);
 
+    /**
+     * 根据id删除班级
+     */
+    void delete(Integer id);
 }
