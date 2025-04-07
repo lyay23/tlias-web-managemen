@@ -120,4 +120,9 @@
 
     </select>
 
+<!--    查询所有员工-->
+    <select id="findAll" resultType="com.itheima.pojo.Emp">
+        select id, username, password, name, gender, phone, job, salary, image, entry_date, dept_id, create_time, update_time from emp
+    </select>
+
 </mapper>

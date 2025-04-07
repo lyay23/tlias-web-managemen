@@ -105,6 +105,15 @@ public class EmpServiceImpl implements EmpService {
     }
 
     /**
+     * 查询所有员工
+     * @return
+     */
+    @Override
+    public List<Emp> findAll() {
+        return empMapper.findAll();
+    }
+
+    /**
      * 修改员工信息
      */
     @Transactional(rollbackFor = Exception.class) //事务管理

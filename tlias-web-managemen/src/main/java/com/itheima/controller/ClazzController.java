@@ -80,7 +80,7 @@ public class ClazzController {
     }
 
     /**
-     * 班级管理--查询所以班级
+     * 班级管理--查询所有班级
      */
     @GetMapping("/list")
     public Result findAll() {

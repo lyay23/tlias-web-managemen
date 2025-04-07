@@ -41,4 +41,9 @@ public interface EmpService {
      * 员工管理--修改员工
      */
     void update(Emp emp);
+
+    /**
+     * 员工管理--查询所有员工
+     */
+    List<Emp> findAll();
 }
