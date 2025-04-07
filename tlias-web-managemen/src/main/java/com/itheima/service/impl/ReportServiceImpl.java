@@ -21,6 +21,8 @@ public class ReportServiceImpl implements ReportService {
 
     @Autowired
     private EmpMapper empMapper;
+
+
     @Override
     public JobOption getEmpJobData() {
         // 1.调用mapper查询数据
@@ -40,4 +42,14 @@ public class ReportServiceImpl implements ReportService {
         List<Object> dataList = maps.stream().map(dataMap -> dataMap.get("num")).toList();
         return new JobOption(jobList,dataList);
     }
+
+    /**
+     * 获取员工性别统计
+     * @return
+     */
+    @Override
+    public List<Map<String, Object>> getEmpGenderData() {
+        return empMapper.countEmpGenderData();
+    }
+
 }
