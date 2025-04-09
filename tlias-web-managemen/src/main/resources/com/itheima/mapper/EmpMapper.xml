@@ -125,4 +125,9 @@
         select id, username, password, name, gender, phone, job, salary, image, entry_date, dept_id, create_time, update_time from emp
     </select>
 
+<!--    根据用户名和密码查询用户-->
+    <select id="selectByUsernameAndPwd" resultType="com.itheima.pojo.Emp">
+        select id, username, password, name from emp where username=#{username} and password=#{password}
+    </select>
+
 </mapper>

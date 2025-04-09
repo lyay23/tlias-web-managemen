@@ -62,4 +62,9 @@ public interface EmpMapper {
      * 查询所有员工信息
      */
     List<Emp> findAll();
+
+    /**
+     * 员工登录
+     */
+    Emp selectByUsernameAndPwd(Emp emp);
 }

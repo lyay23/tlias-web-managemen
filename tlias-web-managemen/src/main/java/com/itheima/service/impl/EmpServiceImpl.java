@@ -136,4 +136,21 @@ public class EmpServiceImpl implements EmpService {
         }
 
     }
+
+    /**
+     * 员工登录
+     */
+    @Override
+    public LoginInfo login(Emp emp) {
+
+        //1. 根据用户名查询员工信息
+        Emp e= empMapper.selectByUsernameAndPwd(emp);
+        //2. 判断员工是否存在，如果存在组装登陆成功的信息
+        if (e!=null){
+            log.info("员工登录成功:{}",e);
+            return new LoginInfo(e.getId(),e.getUsername(),e.getName(),e.getName(),"");
+        }
+        // 3. 如果员工不存在，返回登陆失败的信息
+        return null;
+    }
 }
