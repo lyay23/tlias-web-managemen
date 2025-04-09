@@ -53,4 +53,10 @@ public class StudentServiceImpl implements StudentService {
         //2.调用mapper接口插入数据
         studentMapper.save(student);
     }
+
+    @Override
+    public Student findById(Integer id) {
+
+        return studentMapper.findById(id);
+    }
 }

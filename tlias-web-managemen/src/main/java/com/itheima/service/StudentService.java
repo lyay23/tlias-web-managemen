@@ -22,4 +22,9 @@ public interface StudentService {
      * 学员管理-新增
      */
     void add(Student student);
+
+    /**
+     * 学员管理-根据id查询学员
+     */
+    Student findById(Integer id);
 }

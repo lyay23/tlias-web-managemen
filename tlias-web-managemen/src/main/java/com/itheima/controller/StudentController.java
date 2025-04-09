@@ -45,4 +45,14 @@ public class StudentController {
         return Result.success();
     }
 
+    /**
+     * 学员管理-- 根据id查询学员
+     */
+    @GetMapping("/{id}")
+    public Result findById(@PathVariable("id") Integer id) {
+        log.info("根据id查询学员信息,参数：{}", id);
+        Student student = studentService.findById(id);
+        return Result.success(student);
+    }
+
 }

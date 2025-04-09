@@ -20,7 +20,7 @@
         order by s.update_time desc
     </select>
 
-<!-- 新增学员-->
+    <!-- 新增学员-->
     <insert id="save">
         insert into
         student
@@ -28,4 +28,11 @@
         values
             (#{name}, #{no}, #{gender}, #{phone}, #{idCard}, #{isCollege}, #{address}, #{degree}, #{graduationDate}, #{clazzId})
     </insert>
+
+<!-- 根据id查询学员-->
+    <select id="findById" resultType="com.itheima.pojo.Student">
+        select id, name, no, gender, phone, id_card, is_college, address, degree, graduation_date, clazz_id, violation_count, violation_score, create_time, update_time
+        from student where id = #{id}
+    </select>
+
 </mapper>

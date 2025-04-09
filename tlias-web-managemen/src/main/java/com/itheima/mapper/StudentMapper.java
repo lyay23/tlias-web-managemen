@@ -31,4 +31,9 @@ public interface StudentMapper {
      * 新增学员
      */
     void save(Student student);
+
+    /**
+     * 根据id查询学员
+     */
+    Student findById(Integer id);
 }
