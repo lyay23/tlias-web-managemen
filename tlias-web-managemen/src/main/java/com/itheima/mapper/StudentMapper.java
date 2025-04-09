@@ -2,10 +2,12 @@ package com.itheima.mapper;
 
 import com.itheima.pojo.Student;
 import com.itheima.pojo.StudentQueryParam;
+import org.apache.ibatis.annotations.MapKey;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -47,5 +49,14 @@ public interface StudentMapper {
      */
     void delete(List<Integer> ids);
 
+    /**
+     * 违纪处理
+     */
     void violation(Integer id, Integer score);
+
+    /**
+     * 统计学员数量
+     */
+    @MapKey("clazz_id")
+    List<Map<String, Object>> countStuNumData();
 }

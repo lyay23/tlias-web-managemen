@@ -36,7 +36,8 @@
         from student where id = #{id}
     </select>
 
-<!--    根据id修改学员-->
+
+    <!--    根据id修改学员-->
     <update id="update">
         update student
         <set>
@@ -75,5 +76,15 @@
         update student set violation_count = violation_count + 1, violation_score = violation_score + #{score}, update_time = now()
         where id = #{id}
     </update>
+
+<!-- 统计班级成员-->
+    <select id="countStuNumData" resultType="map">
+        SELECT
+        c.name as cname,
+        COUNT(s.id) as scount
+        FROM clazz c
+        JOIN student s ON c.id = s.clazz_id
+        GROUP BY c.name  <!-- 关键点 -->
+    </select>
 
 </mapper>

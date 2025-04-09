@@ -1,6 +1,7 @@
 package com.itheima.service;
 
 import com.itheima.pojo.JobOption;
+import com.itheima.pojo.StudentCountOption;
 
 import java.util.List;
 import java.util.Map;
@@ -23,4 +24,9 @@ public interface ReportService {
      * 统计员工性别人数
      */
     List<Map<String, Object>> getEmpGenderData();
+
+    /**
+     * 统计班级人数
+     */
+    StudentCountOption getStudentCountData();
 }

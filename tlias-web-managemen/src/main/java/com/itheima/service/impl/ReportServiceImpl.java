@@ -1,7 +1,9 @@
 package com.itheima.service.impl;
 
 import com.itheima.mapper.EmpMapper;
+import com.itheima.mapper.StudentMapper;
 import com.itheima.pojo.JobOption;
+import com.itheima.pojo.StudentCountOption;
 import com.itheima.service.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +24,8 @@ public class ReportServiceImpl implements ReportService {
     @Autowired
     private EmpMapper empMapper;
 
+    @Autowired
+    private StudentMapper studentMapper;
 
     @Override
     public JobOption getEmpJobData() {
@@ -52,4 +56,16 @@ public class ReportServiceImpl implements ReportService {
         return empMapper.countEmpGenderData();
     }
 
+    /**
+     * 获取班级人数统计
+     */
+    @Override
+    public StudentCountOption getStudentCountData() {
+        List<Map<String, Object>> maps = studentMapper.countStuNumData();
+
+        List<Object> jobList = maps.stream().map(dataMap -> dataMap.get("cname")).toList();
+
+        List<Object> dataList = maps.stream().map(dataMap -> dataMap.get("scount")).toList();
+        return new StudentCountOption(jobList,dataList);
+    }
 }

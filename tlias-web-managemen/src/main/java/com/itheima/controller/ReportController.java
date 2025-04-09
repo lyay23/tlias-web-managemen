@@ -2,6 +2,7 @@ package com.itheima.controller;
 
 import com.itheima.pojo.JobOption;
 import com.itheima.pojo.Result;
+import com.itheima.pojo.StudentCountOption;
 import com.itheima.service.ReportService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,5 +46,15 @@ public class ReportController {
         List<Map<String,Object>> genderList= reportService.getEmpGenderData();
 
         return Result.success(genderList);
+    }
+
+    /**
+     * 获取班级人数统计
+     */
+    @GetMapping("/studentCountData")
+    public Result getClassNumData() {
+        log.info("获取班级人数统计");
+        StudentCountOption studentCountOption= reportService.getStudentCountData();
+        return Result.success(studentCountOption);
     }
 }
