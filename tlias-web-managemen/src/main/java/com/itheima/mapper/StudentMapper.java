@@ -46,4 +46,6 @@ public interface StudentMapper {
      * 批量删除学员
      */
     void delete(List<Integer> ids);
+
+    void violation(Integer id, Integer score);
 }

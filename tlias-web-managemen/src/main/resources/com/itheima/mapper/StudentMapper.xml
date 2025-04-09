@@ -60,7 +60,8 @@
 
     </update>
 
-<!-- 批量删除学员-->
+
+    <!-- 批量删除学员-->
     <delete id="delete">
         delete from student where id in
                             <foreach collection="ids" item="id" open="(" separator="," close=")">
@@ -68,5 +69,11 @@
                             </foreach>
 
     </delete>
+
+<!--    违纪处理-->
+    <update id="violation">
+        update student set violation_count = violation_count + 1, violation_score = violation_score + #{score}, update_time = now()
+        where id = #{id}
+    </update>
 
 </mapper>

@@ -80,4 +80,12 @@ public class StudentServiceImpl implements StudentService {
     public void delete(List<Integer> ids) {
      studentMapper.delete(ids);
     }
+
+    /**
+     * 学员管理-违纪处理
+     */
+    @Override
+    public void violation(Integer id, Integer score) {
+        studentMapper.violation(id,score);
+    }
 }
