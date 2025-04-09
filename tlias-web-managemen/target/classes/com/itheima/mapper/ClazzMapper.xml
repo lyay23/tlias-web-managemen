@@ -53,6 +53,6 @@
 
 <!--    查询所有班级-->
     <select id="findAll" resultType="com.itheima.pojo.Clazz">
-        select  name, room, begin_date, end_date, master_id, subject, create_time, update_time from clazz
+        select id, name, room, begin_date, end_date, master_id, subject, create_time, update_time from clazz
     </select>
 </mapper>
