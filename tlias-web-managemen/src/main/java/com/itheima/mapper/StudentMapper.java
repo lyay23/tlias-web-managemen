@@ -26,4 +26,9 @@ public interface StudentMapper {
 
     @Select("select count(*) from student where clazz_id = #{id}")
     Integer countByClazzId(Integer id);
+
+    /**
+     * 新增学员
+     */
+    void save(Student student);
 }

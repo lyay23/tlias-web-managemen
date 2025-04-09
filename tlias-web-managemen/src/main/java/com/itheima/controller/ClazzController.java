@@ -39,8 +39,6 @@ public class ClazzController {
 
     /**
      * 班级管理--新增班级
-     * 这里的班主任功能我不会写，如果有人会写请联系我，谢谢！
-     * 这里的班主任是非必须功能，所以很遗憾不会写
      */
     @PostMapping
     public Result save(@RequestBody Clazz clazz) {

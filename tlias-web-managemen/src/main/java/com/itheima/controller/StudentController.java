@@ -7,9 +7,7 @@ import com.itheima.pojo.StudentQueryParam;
 import com.itheima.service.StudentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -36,4 +34,15 @@ public class StudentController {
         PageResult<Student> pageResult = studentService.page(studentQueryParam);
         return Result.success(pageResult);
     }
+
+    /**
+     * 学员管理-- 新增学员
+     */
+    @PostMapping
+    public Result add(@RequestBody Student student) {
+        log.info("新增学员信息,参数：{}", student);
+        studentService.add(student);
+        return Result.success();
+    }
+
 }

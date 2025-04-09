@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.itheima.mapper.StudentMapper">
 
-<!-- 分页查询-->
+
+    <!-- 分页查询-->
     <select id="list" resultType="com.itheima.pojo.Student">
         select s.*, c.name clazzName from student s left join clazz c on s.clazz_id = c.id
         <where>
@@ -18,4 +19,13 @@
         </where>
         order by s.update_time desc
     </select>
+
+<!-- 新增学员-->
+    <insert id="save">
+        insert into
+        student
+        (name, no, gender, phone, id_card, is_college, address, degree, graduation_date, clazz_id)
+        values
+            (#{name}, #{no}, #{gender}, #{phone}, #{idCard}, #{isCollege}, #{address}, #{degree}, #{graduationDate}, #{clazzId})
+    </insert>
 </mapper>

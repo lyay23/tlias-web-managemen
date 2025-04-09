@@ -10,6 +10,7 @@ import com.itheima.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -25,6 +26,8 @@ public class StudentServiceImpl implements StudentService {
     @Autowired
     private StudentMapper studentMapper;
 
+
+
     /**
      * 学员管理-分页查询
      */
@@ -37,5 +40,17 @@ public class StudentServiceImpl implements StudentService {
         //3.封装结果并返回
         Page<Student> pageResult = (Page<Student>) studentList;
         return new PageResult<Student> (pageResult.getTotal(),pageResult.getResult());
+    }
+
+    /**
+     * 学员管理-新增
+     */
+    @Override
+    public void add(Student student) {
+        //补全基本信息
+        student.setCreateTime(LocalDateTime.now());
+        student.setUpdateTime(LocalDateTime.now());
+        //2.调用mapper接口插入数据
+        studentMapper.save(student);
     }
 }
