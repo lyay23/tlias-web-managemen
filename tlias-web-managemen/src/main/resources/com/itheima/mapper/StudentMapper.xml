@@ -87,4 +87,18 @@
         GROUP BY c.name
     </select>
 
+<!--    统计学员学历-->
+    <select id="countStuEduData" resultType="java.util.Map">
+       select
+           (case when degree=1 then '初中'
+                 when degree=2 then '高中'
+                 when degree=3 then '大专'
+                 when degree=4 then '本科'
+                 when degree=5 then '硕士'
+                 when degree=6 then '博士'
+                 else '其他' end) as name,
+           count(*) value
+       from student group by degree
+    </select>
+
 </mapper>

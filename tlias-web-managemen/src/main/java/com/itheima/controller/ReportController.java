@@ -57,4 +57,14 @@ public class ReportController {
         StudentCountOption studentCountOption= reportService.getStudentCountData();
         return Result.success(studentCountOption);
     }
+
+    /**
+     * 获取学员学历统计
+     */
+    @GetMapping("/studentDegreeData")
+    public Result getStudentEduData() {
+        log.info("获取学员学历统计");
+        List<Map<String,Object>> eduList= reportService.getStudentEduData();
+        return Result.success(eduList);
+    }
 }

@@ -68,4 +68,12 @@ public class ReportServiceImpl implements ReportService {
         List<Object> dataList = maps.stream().map(dataMap -> dataMap.get("scount")).toList();
         return new StudentCountOption(jobList,dataList);
     }
+
+    /**
+     * 获取学历统计
+     */
+    @Override
+    public List<Map<String, Object>> getStudentEduData() {
+        return studentMapper.countStuEduData();
+    }
 }

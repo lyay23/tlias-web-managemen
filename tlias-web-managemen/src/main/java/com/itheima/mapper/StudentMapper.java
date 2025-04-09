@@ -59,4 +59,9 @@ public interface StudentMapper {
      */
     @MapKey("clazz_id")
     List<Map<String, Object>> countStuNumData();
+
+    /**
+     * 统计学员学历
+     */
+    List<Map<String, Object>> countStuEduData();
 }

@@ -29,4 +29,9 @@ public interface ReportService {
      * 统计班级人数
      */
     StudentCountOption getStudentCountData();
+
+    /**
+     * 统计学员学历
+     */
+    List<Map<String, Object>> getStudentEduData();
 }
