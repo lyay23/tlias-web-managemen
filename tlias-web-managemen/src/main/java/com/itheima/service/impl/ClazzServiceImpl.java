@@ -41,7 +41,7 @@ public class ClazzServiceImpl implements ClazzService {
         List<Clazz> clazzList = clazzMapper.list(clazzQueryParam);
         //3.封装结果并返回
         Page<Clazz> pageResult = (Page<Clazz>) clazzList;
-        return new PageResult (pageResult.getTotal(),pageResult.getResult());
+        return new PageResult<Clazz> (pageResult.getTotal(),pageResult.getResult());
     }
 
     /**
