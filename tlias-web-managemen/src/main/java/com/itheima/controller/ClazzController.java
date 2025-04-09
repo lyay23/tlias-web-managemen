@@ -1,5 +1,6 @@
 package com.itheima.controller;
 
+import com.itheima.exception.BusinessException;
 import com.itheima.pojo.Clazz;
 import com.itheima.pojo.ClazzQueryParam;
 import com.itheima.pojo.PageResult;
@@ -52,9 +53,15 @@ public class ClazzController {
      */
     @DeleteMapping("/{id}")
     public Result delete(@PathVariable("id") Integer id) {
-        log.info("删除班级信息,参数：{}", id);
-        clazzService.delete(id);
-        return Result.success();
+        try {
+            clazzService.delete(id);
+            log.info("删除班级信息,参数：{}", id);
+            return Result.success();
+        } catch (BusinessException e) {
+            // 捕获业务异常，返回错误信息给前端
+            log.error("删除班级失败：{}", e.getMessage());
+            return Result.error(e.getMessage());
+        }
     }
 
     /**

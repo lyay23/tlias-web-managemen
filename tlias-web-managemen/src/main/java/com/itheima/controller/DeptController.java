@@ -1,5 +1,6 @@
 package com.itheima.controller;
 
+import com.itheima.exception.BusinessException;
 import com.itheima.pojo.Dept;
 import com.itheima.pojo.Result;
 import com.itheima.service.DeptService;
@@ -38,11 +39,17 @@ public class DeptController {
      * 部门管理--删除指定部门
      */
     @DeleteMapping
-   public Result delete( Integer id){
-        deptService.deleteById(id);
-        log.info("删除部门id为：{}",id);
-        return Result.success();
-   }
+    public Result delete(Integer id) {
+        try {
+            deptService.deleteById(id);
+            log.info("删除部门id为：{}", id);
+            return Result.success();
+        } catch (BusinessException e) {
+            // 捕获业务异常，返回错误信息给前端
+            log.error("删除部门失败：{}", e.getMessage());
+            return Result.error(e.getMessage());
+        }
+    }
 
    /**
     * 部门管理--添加部门

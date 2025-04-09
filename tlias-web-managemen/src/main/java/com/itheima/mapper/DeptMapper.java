@@ -45,4 +45,10 @@ public interface DeptMapper {
      */
     @Update("update dept set name = #{name}, update_time = #{updateTime} where id = #{id}")
     void update(Dept dept);
+
+    /**
+     * 统计指定部门下的员工数量
+     */
+    @Select("SELECT COUNT(*) FROM emp WHERE dept_id = #{deptId}")
+    Integer countEmployeesByDeptId(Integer deptId);
 }

@@ -51,7 +51,7 @@ public class ClazzServiceImpl implements ClazzService {
     public void delete(Integer id) {
        Integer count=studentMapper.countByClazzId(id);
         if(count>0){
-            // 这段代码抄人家的 不过实测使用RuntimeException也是一样的
+
             throw new BusinessException("该班级下有学生，不能删除");
 
         }
