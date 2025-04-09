@@ -55,4 +55,13 @@ public class StudentController {
         return Result.success(student);
     }
 
+    /**
+     * 学员管理-- 根据id修改学员
+     */
+    @PutMapping
+    public Result update(@RequestBody Student student) {
+        log.info("修改学员信息,参数：{}", student);
+        studentService.update(student);
+        return Result.success();
+    }
 }

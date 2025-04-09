@@ -36,4 +36,9 @@ public interface StudentMapper {
      * 根据id查询学员
      */
     Student findById(Integer id);
+
+    /**
+     * 修改学员
+     */
+    void update(Student student);
 }
