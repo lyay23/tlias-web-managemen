@@ -9,6 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  *
@@ -64,4 +66,16 @@ public class StudentController {
         studentService.update(student);
         return Result.success();
     }
+
+    /**
+     * 学员管理-- 根据id批量删除学员
+     */
+    @DeleteMapping("/{ids}")
+    public Result delete(@PathVariable("ids") List<Integer> ids) {
+        log.info("删除学员信息,参数：{}", ids);
+        studentService.delete(ids);
+        return Result.success();
+    }
+
+
 }

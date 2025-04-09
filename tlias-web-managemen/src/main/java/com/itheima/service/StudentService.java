@@ -4,6 +4,8 @@ import com.itheima.pojo.PageResult;
 import com.itheima.pojo.Student;
 import com.itheima.pojo.StudentQueryParam;
 
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  *
@@ -32,4 +34,9 @@ public interface StudentService {
      * 学员管理-修改
      */
     void update(Student student);
+
+    /**
+     * 学员管理-批量删除
+     */
+    void delete(List<Integer> ids);
 }

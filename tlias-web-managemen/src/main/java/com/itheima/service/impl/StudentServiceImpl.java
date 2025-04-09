@@ -54,15 +54,30 @@ public class StudentServiceImpl implements StudentService {
         studentMapper.save(student);
     }
 
+    /**
+     * 学员管理-根据id查询
+     */
     @Override
     public Student findById(Integer id) {
 
         return studentMapper.findById(id);
     }
 
+    /**
+     * 学员管理-根据id修改
+     */
     @Override
     public void update(Student student) {
         student.setUpdateTime(LocalDateTime.now());
         studentMapper.update(student);
+    }
+
+    /**
+     * 学员管理-批量删除
+     */
+
+    @Override
+    public void delete(List<Integer> ids) {
+     studentMapper.delete(ids);
     }
 }
