@@ -8,7 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -19,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
  * @Description: 登录页面的控制器
  */
 @RestController
-@RequestMapping("/login")
 @Slf4j
 public class LoginController {
 
@@ -28,12 +26,12 @@ public class LoginController {
     /**
      * 登录模块-登录功能
      */
-    @PostMapping
+    @PostMapping("/login")
     public Result login(@RequestBody Emp emp) {
        log.info("登录：{}", emp);
-       LoginInfo loginInfo= empService.login(emp);
-       if (loginInfo!=null){
-           return Result.success(loginInfo);
+       LoginInfo info= empService.login(emp);
+       if (info != null){
+           return Result.success(info);
        }
        return Result.error("用户名或密码错误");
     }

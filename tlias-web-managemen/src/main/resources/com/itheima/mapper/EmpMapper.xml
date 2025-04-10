@@ -127,7 +127,7 @@
 
 <!--    根据用户名和密码查询用户-->
     <select id="selectByUsernameAndPwd" resultType="com.itheima.pojo.Emp">
-        select id, username, password, name from emp where username=#{username} and password=#{password}
+        select id, username, name from emp where username=#{username} and password=#{password}
     </select>
 
 </mapper>

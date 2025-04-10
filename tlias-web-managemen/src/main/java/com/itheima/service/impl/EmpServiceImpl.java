@@ -7,6 +7,7 @@ import com.itheima.mapper.EmpMapper;
 import com.itheima.pojo.*;
 import com.itheima.service.EmpLogService;
 import com.itheima.service.EmpService;
+import com.itheima.util.JwtUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,9 @@ import org.springframework.util.CollectionUtils;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -148,7 +151,14 @@ public class EmpServiceImpl implements EmpService {
         //2. 判断员工是否存在，如果存在组装登陆成功的信息
         if (e!=null){
             log.info("员工登录成功:{}",e);
-            return new LoginInfo(e.getId(),e.getUsername(),e.getName(),e.getName(),"");
+
+            //生成JWT令牌
+            Map<String,Object> claims = new HashMap<>();
+            claims.put("id",e.getId());
+            claims.put("username",e.getUsername());
+            String jwt = JwtUtils.generateToken(claims);
+
+            return new LoginInfo(e.getId(),e.getUsername(),e.getName(),jwt);
         }
         // 3. 如果员工不存在，返回登陆失败的信息
         return null;
