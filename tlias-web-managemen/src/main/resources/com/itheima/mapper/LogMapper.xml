@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itheima.mapper.LogMapper">
+
+    <!--分页条件查询-->
+    <select id="list" resultType="com.itheima.pojo.LogList">
+       select o.* ,e.name operateEmpName from operate_log o,emp e
+       where o.operate_emp_id = e.id
+       order by o.operate_time desc
+    </select>
+
+
+
+
+</mapper>
