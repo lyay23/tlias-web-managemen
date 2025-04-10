@@ -1,33 +1,29 @@
-package com.itheima.filter;
+package com.itheima.interceptor;
 
 import com.itheima.util.JwtUtils;
-import jakarta.servlet.*;
-import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
-
-import java.io.IOException;
+import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.HandlerInterceptor;
 
 /**
  * Created with IntelliJ IDEA.
  *
  * @Author: 李阳
- * @Date: 2025/04/10/15:03
- * @Description: 令牌校验Filter的拦截器
+ * @Date: 2025/04/10/16:36
+ * @Description: 拦截器
  */
 @Slf4j
-@WebFilter(urlPatterns = {"/*"}) // 拦截所有请求
-public class TokenFilter implements Filter {
+@Component
+public class TokenInterceptor implements HandlerInterceptor {
 
     /**
-     *  拦截前端请求，判断请求头中是否包含token
+     * 在目标方法运行之前拦截
      */
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
-        HttpServletRequest request = (HttpServletRequest) servletRequest;
-        HttpServletResponse response = (HttpServletResponse) servletResponse;
         // 1.获取到请求路径
         // /login
         String path = request.getRequestURI();
@@ -36,8 +32,7 @@ public class TokenFilter implements Filter {
 
         if (path.contains("/login")){
             log.info("登录请求，放行");
-            filterChain.doFilter(request,response);
-            return;
+            return true;
         }
 
         // 3.获取请求头中的token
@@ -47,7 +42,7 @@ public class TokenFilter implements Filter {
         if (token==null || token.isEmpty()){
             log.info("令牌为空");
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            return;
+            return false;
         }
 
         // 5.如果token存在，就放行，并且将token解析，获取其中的用户信息，校验不通过返回401
@@ -58,11 +53,13 @@ public class TokenFilter implements Filter {
         } catch (Exception e) {
             log.info("令牌非法");
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            return false;
         }
 
         // 6.如果token校验通过，将用户放行
         log.info("令牌校验通过");
-        filterChain.doFilter(request,response);
-    }
+        return true;
 
+
+}
 }
