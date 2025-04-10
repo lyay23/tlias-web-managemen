@@ -84,7 +84,7 @@
         COUNT(s.id) as scount
         FROM clazz c
         JOIN student s ON c.id = s.clazz_id
-        GROUP BY c.name
+        GROUP BY c.name order by scount
     </select>
 
 <!--    统计学员学历-->
