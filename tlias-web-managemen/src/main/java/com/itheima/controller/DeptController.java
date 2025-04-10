@@ -1,5 +1,6 @@
 package com.itheima.controller;
 
+import com.itheima.anno.Log;
 import com.itheima.exception.BusinessException;
 import com.itheima.pojo.Dept;
 import com.itheima.pojo.Result;
@@ -38,6 +39,7 @@ public class DeptController {
     /**
      * 部门管理--删除指定部门
      */
+    @Log // 使用 @Log 注解记录日志
     @DeleteMapping
     public Result delete(Integer id) {
         try {
@@ -54,6 +56,7 @@ public class DeptController {
    /**
     * 部门管理--添加部门
     */
+   @Log // 使用 @Log 注解记录日志
    @PostMapping
    public Result add(@RequestBody Dept dept){
        deptService.add(dept);
@@ -65,6 +68,7 @@ public class DeptController {
     * 部门管理--修改部门
     */
    //首先要根据这个id查询出这个部门，实现回显操作
+   @Log // 使用 @Log 注解记录日志
    @GetMapping("/{id}")
    public Result getInfo(@PathVariable Integer id){
        log.info("查询部门id为：{}",id);
@@ -73,6 +77,7 @@ public class DeptController {
        return Result.success(dept);
    }
    //根据id修改部门
+   @Log // 使用 @Log 注解记录日志
    @PutMapping
     public Result update(@RequestBody Dept dept){
        deptService.update(dept);

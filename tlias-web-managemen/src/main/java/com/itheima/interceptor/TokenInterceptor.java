@@ -4,7 +4,6 @@ import com.itheima.util.JwtUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 /**
@@ -15,7 +14,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
  * @Description: 拦截器
  */
 @Slf4j
-@Component
+//@Component
 public class TokenInterceptor implements HandlerInterceptor {
 
     /**
